@@ -5,19 +5,25 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Vector3 _savedPosition;
-    private Vector3 _offset = new Vector3(0.001f,0);
-    //область видимости Апдейта, глобальная переменная
-    // Start is called before the first frame update
+    //private Vector3 _offset = new Vector3(0.01f,0);
+    //область видимости метода Апдейта, глобальная переменная
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        Transform transformCube = GetComponent<Transform>();
-        _savedPosition = transformCube.position + _offset;
+        var transformCube = GetComponent<Transform>();
+        _savedPosition = transformCube.position + new Vector3(0.01f,0);
         transformCube.position = _savedPosition;
+
+        if (transformCube.position.x > 8 && transformCube.position.y < -4)
+        {
+            transformCube.position = _savedPosition + new Vector3(0.01f, 0); //нужно убрать изменение по оси x
+        }
+        else if (transformCube.position.x > 8)
+        {
+            transformCube.position = _savedPosition + new Vector3(0, 0.01f);
+        }
     }
 }
