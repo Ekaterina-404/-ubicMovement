@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
         var transformCube = GetComponent<Transform>();
         _savedPosition = transformCube.position;
 
-        if (transformCube.position.x <= 8 & transformCube.position.y >= -4)
+        if (transformCube.position.x <= 8 & transformCube.position.y <= -4)
         {
             transformCube.position = _savedPosition + _offsetRight;
         }
@@ -25,11 +25,11 @@ public class Movement : MonoBehaviour
         {
             transformCube.position = _savedPosition + _offsetUp;
         }
-        else if (transformCube.position.x >= 8 & transformCube.position.y >= 4)
+        else if (transformCube.position.x >= -8 & transformCube.position.y >= 4)
         {
             transformCube.position = _savedPosition + _offsetLeft;
         }
-        else if (transformCube.position.y < -4)
+        else if (transform.position.x <= -8 & transformCube.position.y >= -4)
         {
             transformCube.position = _savedPosition + _offsetDown;
         }
