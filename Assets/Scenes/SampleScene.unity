@@ -334,6 +334,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f78dc5c6e8791409715d01cd302ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _points:
+  - {x: -8, y: -4, z: 0}
+  - {x: 8, y: -4, z: 0}
+  - {x: -8, y: 4, z: 0}
+  - {x: -8, y: -4, z: 0}
+  - {x: 8, y: 4, z: 0}
+  - {x: -8, y: 4, z: 0}
+  - {x: 8, y: -4, z: 0}
+  - {x: 8, y: 4, z: 0}
+  - {x: -8, y: -4, z: 0}
 --- !u!114 &1644066276
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,8 +10,8 @@ public class Movement : MonoBehaviour
     private Vector3 _offsetLeft = new Vector3(-0.01f, 0); //=-_offsetRight
     private Vector3 _offsetUp = new Vector3(0, 0.01f);
     private Vector3 _offsetDown = new Vector3(0, -0.01f); //=-_offsetUp
-
     //глобальная переменная
+    
     void Update()
     {
         var transformCube = GetComponent<Transform>();
