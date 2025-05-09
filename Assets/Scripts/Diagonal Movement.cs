@@ -6,20 +6,15 @@ using UnityEngine;
 
 public class DiagonalMovement : MonoBehaviour
 {
-    //[SerializeField] private Vector3[] _points = new Vector3[9];
-    //private static Vector3 _savedPosition;
-    //private float speed = 2f;
-    private static Vector3 _firstPosition = new Vector3(-8, -4);
-    private static Vector3 _secondPosition = new Vector3(8, 4);
+    [SerializeField] private Vector3[] _points = new Vector3[9];
     float timeElapsed;
-    float lerpDuration = 3;
-
-    //float lerpedValue;
+    float speed = 8;
+    //private static Vector3 _savedPosition;
 
     void Start()
     {
         var transformCube = GetComponent<Transform>();
-        transformCube.position = _firstPosition;
+        transformCube.position = _points[0];
         //_savedPosition = transformCube.position;
     }
 
@@ -28,14 +23,13 @@ public class DiagonalMovement : MonoBehaviour
         //MoveToWithLerp(_points, t);
         //private void MoveToWithLerp(Vector3[] positions, float time)
 
-        //for (int i = 0; i < _points.Length; i++)
-        //if (i == 0)
-
-
-        if (timeElapsed < lerpDuration)
+        for (int i = 0; i < _points.Length; i++)
         {
-            transform.position = Vector3.Lerp(_firstPosition, _secondPosition, timeElapsed / lerpDuration);
-            timeElapsed += Time.deltaTime;
+            if (timeElapsed < speed)
+            {
+                transform.position = Vector3.Lerp(_points[i], _points[i + 1], timeElapsed / speed);
+                timeElapsed += Time.deltaTime;
+            }
         }
     }
 }
