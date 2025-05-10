@@ -7,29 +7,35 @@ using UnityEngine;
 public class DiagonalMovement : MonoBehaviour
 {
     [SerializeField] private Vector3[] _points = new Vector3[9];
-    float timeElapsed;
-    float speed = 8;
-    //private static Vector3 _savedPosition;
+    private float _timeElapsed;
+    private float _speed = 2;
+    private int _currentIndex;
 
-    void Start()
+    private void Start()
     {
         var transformCube = GetComponent<Transform>();
-        transformCube.position = _points[0];
-        //_savedPosition = transformCube.position;
+        transformCube.position = _points[_currentIndex];
     }
 
-    void Update()
+    private void Update()
     {
-        //MoveToWithLerp(_points, t);
-        //private void MoveToWithLerp(Vector3[] positions, float time)
 
-        for (int i = 0; i < _points.Length; i++)
+        if (_timeElapsed < _speed)
         {
-            if (timeElapsed < speed)
+            transform.position = Vector3.Lerp(_points[_currentIndex], _points[_currentIndex + 1], _timeElapsed / _speed);
+            _timeElapsed += Time.deltaTime;
+        }
+
+        if (_timeElapsed >= _speed)
+        {
+            _currentIndex++;
+
+            if (_currentIndex >= _points.Length - 1)
             {
-                transform.position = Vector3.Lerp(_points[i], _points[i + 1], timeElapsed / speed);
-                timeElapsed += Time.deltaTime;
+                _currentIndex = 0;
             }
+
+            _timeElapsed = 0;
         }
     }
 }
